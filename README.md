@@ -1,5 +1,5 @@
 # Official Ubuntu Repository
-This script functions to replace our Ubuntu repository with the official Ubuntu repository.
+This script is used to replace our repository with the official repository from Ubuntu.
 ## List Repository
 - 18.04 ( Bionic Beaver )
 - 20.04 ( Focal Fossa )
@@ -15,4 +15,7 @@ bash <(curl -s https://raw.githubusercontent.com/safrinnetwork/Ubuntu-Repository
 bash <(wget -qO- https://raw.githubusercontent.com/safrinnetwork/Ubuntu-Repository/main/repository.sh)
 ```
 ## Old Repository File
-/etc/apt/sources.list.backup
+You can see your old repositories here /etc/apt/sources.list.backup or you can type this command in your ubuntu terminal to display a list of your old repositories.
+```
+cat /etc/apt/sources.list.backup
+```
