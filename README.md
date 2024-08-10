@@ -1,4 +1,4 @@
-# Ubuntu Repository
+# Official Ubuntu Repository
 This script functions to replace our Ubuntu repository with the official Ubuntu repository.
 ## List Repository
 - 18.04 ( Bionic Beaver )
