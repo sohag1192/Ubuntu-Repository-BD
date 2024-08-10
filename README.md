@@ -6,6 +6,11 @@ This script functions to replace our Ubuntu repository with the official Ubuntu 
 - 22.04 ( Jammy Jellyfish )
 - 24.04 ( Noble Numbat )
 # Usage
+Curl
 ```
-git clone https://github.com/safrinnetwork/Ubuntu-Repository.git && cd Ubuntu-Repository && chmod +x repository.sh && sudo ./repository.sh
+bash <(curl -s https://raw.githubusercontent.com/safrinnetwork/Ubuntu-Repository/main/repository.sh)
+```
+Wget
+```
+bash <(wget -qO- https://raw.githubusercontent.com/safrinnetwork/Ubuntu-Repository/main/repository.sh)
 ```
