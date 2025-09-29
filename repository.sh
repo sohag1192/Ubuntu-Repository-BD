@@ -1,13 +1,20 @@
 #!/bin/bash
 
-# Backup existing sources.list
-sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup
-
 # Detect Ubuntu version codename
 ubuntu_version=$(lsb_release -cs)
 
-# Clear the existing sources.list
-sudo truncate -s 0 /etc/apt/sources.list
+# Backup existing sources based on Ubuntu version
+if [ "$ubuntu_version" = "noble" ]; then
+  # Ubuntu 24.04 uses DEB822 format in sources.list.d
+  if [ -f /etc/apt/sources.list.d/ubuntu.sources ]; then
+    sudo cp /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources.backup
+  fi
+else
+  # Older Ubuntu versions use traditional sources.list
+  sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup
+  # Clear the existing sources.list
+  sudo truncate -s 0 /etc/apt/sources.list
+fi
 
 # Set repositories based on Ubuntu version
 case "$ubuntu_version" in
@@ -73,22 +80,19 @@ EOL
     ;;
   "noble")
     echo "Setting repositories for Ubuntu 24.04 (Noble)"
-    cat <<EOL | sudo tee /etc/apt/sources.list
-# Primary Ubuntu repositories
-deb http://archive.ubuntu.com/ubuntu/ noble main restricted
-deb http://archive.ubuntu.com/ubuntu/ noble-updates main restricted
-deb http://archive.ubuntu.com/ubuntu/ noble universe
-deb http://archive.ubuntu.com/ubuntu/ noble-updates universe
-deb http://archive.ubuntu.com/ubuntu/ noble multiverse
-deb http://archive.ubuntu.com/ubuntu/ noble-updates multiverse
+    # Create the new DEB822 format sources file
+    cat <<EOL | sudo tee /etc/apt/sources.list.d/ubuntu.sources
+Types: deb
+URIs: http://archive.ubuntu.com/ubuntu/
+Suites: noble noble-updates noble-backports
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
 
-# Security updates
-deb http://security.ubuntu.com/ubuntu noble-security main restricted
-deb http://security.ubuntu.com/ubuntu noble-security universe
-deb http://security.ubuntu.com/ubuntu noble-security multiverse
-
-# Optional Backports repository
-deb http://archive.ubuntu.com/ubuntu/ noble-backports main restricted universe multiverse
+Types: deb
+URIs: http://security.ubuntu.com/ubuntu/
+Suites: noble-security
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
 EOL
     ;;
   *)
