@@ -22,12 +22,12 @@ case "$ubuntu_version" in
     echo "Setting repositories for Ubuntu 18.04 (Bionic Beaver)"
     cat <<EOL | sudo tee /etc/apt/sources.list
 # Primary Ubuntu repositories
-deb http://archive.ubuntu.com/ubuntu/ bionic main restricted
-deb http://archive.ubuntu.com/ubuntu/ bionic-updates main restricted
-deb http://archive.ubuntu.com/ubuntu/ bionic universe
-deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe
-deb http://archive.ubuntu.com/ubuntu/ bionic multiverse
-deb http://archive.ubuntu.com/ubuntu/ bionic-updates multiverse
+deb https://mirror.xeonbd.com/ubuntu-archive/ bionic main restricted
+deb https://mirror.xeonbd.com/ubuntu-archive/ bionic-updates main restricted
+deb https://mirror.xeonbd.com/ubuntu-archive/ bionic universe
+deb https://mirror.xeonbd.com/ubuntu-archive/ bionic-updates universe
+deb https://mirror.xeonbd.com/ubuntu-archive/ bionic multiverse
+deb https://mirror.xeonbd.com/ubuntu-archive/ bionic-updates multiverse
 
 # Security updates
 deb http://security.ubuntu.com/ubuntu bionic-security main restricted
@@ -35,19 +35,19 @@ deb http://security.ubuntu.com/ubuntu bionic-security universe
 deb http://security.ubuntu.com/ubuntu bionic-security multiverse
 
 # Optional Backports repository
-deb http://archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb https://mirror.xeonbd.com/ubuntu-archive/ bionic-backports main restricted universe multiverse
 EOL
     ;;
   "focal")
     echo "Setting repositories for Ubuntu 20.04 (Focal Fossa)"
     cat <<EOL | sudo tee /etc/apt/sources.list
 # Primary Ubuntu repositories
-deb http://archive.ubuntu.com/ubuntu/ focal main restricted
-deb http://archive.ubuntu.com/ubuntu/ focal-updates main restricted
-deb http://archive.ubuntu.com/ubuntu/ focal universe
-deb http://archive.ubuntu.com/ubuntu/ focal-updates universe
-deb http://archive.ubuntu.com/ubuntu/ focal multiverse
-deb http://archive.ubuntu.com/ubuntu/ focal-updates multiverse
+deb https://mirror.xeonbd.com/ubuntu-archive/ focal main restricted
+deb https://mirror.xeonbd.com/ubuntu-archive/ focal-updates main restricted
+deb https://mirror.xeonbd.com/ubuntu-archive/ focal universe
+deb https://mirror.xeonbd.com/ubuntu-archive/ focal-updates universe
+deb https://mirror.xeonbd.com/ubuntu-archive/ focal multiverse
+deb https://mirror.xeonbd.com/ubuntu-archive/ focal-updates multiverse
 
 # Security updates
 deb http://security.ubuntu.com/ubuntu focal-security main restricted
@@ -55,19 +55,19 @@ deb http://security.ubuntu.com/ubuntu focal-security universe
 deb http://security.ubuntu.com/ubuntu focal-security multiverse
 
 # Optional Backports repository
-deb http://archive.ubuntu.com/ubuntu/ focal-backports main restricted universe multiverse
+deb https://mirror.xeonbd.com/ubuntu-archive/ focal-backports main restricted universe multiverse
 EOL
     ;;
   "jammy")
     echo "Setting repositories for Ubuntu 22.04 (Jammy Jellyfish)"
     cat <<EOL | sudo tee /etc/apt/sources.list
 # Primary Ubuntu repositories
-deb http://archive.ubuntu.com/ubuntu/ jammy main restricted
-deb http://archive.ubuntu.com/ubuntu/ jammy-updates main restricted
-deb http://archive.ubuntu.com/ubuntu/ jammy universe
-deb http://archive.ubuntu.com/ubuntu/ jammy-updates universe
-deb http://archive.ubuntu.com/ubuntu/ jammy multiverse
-deb http://archive.ubuntu.com/ubuntu/ jammy-updates multiverse
+deb https://mirror.xeonbd.com/ubuntu-archive/ jammy main restricted
+deb https://mirror.xeonbd.com/ubuntu-archive/ jammy-updates main restricted
+deb https://mirror.xeonbd.com/ubuntu-archive/ jammy universe
+deb https://mirror.xeonbd.com/ubuntu-archive/ jammy-updates universe
+deb https://mirror.xeonbd.com/ubuntu-archive/ jammy multiverse
+deb https://mirror.xeonbd.com/ubuntu-archive/ jammy-updates multiverse
 
 # Security updates
 deb http://security.ubuntu.com/ubuntu jammy-security main restricted
@@ -75,7 +75,7 @@ deb http://security.ubuntu.com/ubuntu jammy-security universe
 deb http://security.ubuntu.com/ubuntu jammy-security multiverse
 
 # Optional Backports repository
-deb http://archive.ubuntu.com/ubuntu/ jammy-backports main restricted universe multiverse
+deb https://mirror.xeonbd.com/ubuntu-archive/ jammy-backports main restricted universe multiverse
 EOL
     ;;
   "noble")
@@ -83,7 +83,7 @@ EOL
     # Create the new DEB822 format sources file
     cat <<EOL | sudo tee /etc/apt/sources.list.d/ubuntu.sources
 Types: deb
-URIs: http://archive.ubuntu.com/ubuntu/
+URIs: https://mirror.xeonbd.com/ubuntu-archive/
 Suites: noble noble-updates noble-backports
 Components: main restricted universe multiverse
 Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
