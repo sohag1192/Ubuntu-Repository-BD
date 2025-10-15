@@ -1,4 +1,4 @@
-# Official Ubuntu Repository BD Server (xeonbd)
+# Official Ubuntu Repository BD Server
 This script is used to replace existing repository with the official repository from Ubuntu.
 ### List Repository
 - 18.04 ( Bionic Beaver )
@@ -19,3 +19,6 @@ You can see your old repositories here /etc/apt/sources.list.backup or you can t
 ```
 cat /etc/apt/sources.list.backup
 ```
+### Official Ubuntu  BD Server 
+
+    http://mirrors.ubuntu.com/BD.txt
